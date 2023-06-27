@@ -1,0 +1,9 @@
+{
+  "hosting": [
+    {
+      "target": "dnd-helper",
+      "source": ".",
+      "frameworksBackend": {}
+    }
+  ]
+}

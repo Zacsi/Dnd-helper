@@ -1,0 +1,14 @@
+{
+  "targets": {
+    "dnd-helper-2023": {
+      "hosting": {
+        "dnd-helper": [
+          "dnd-helper-2023"
+        ]
+      }
+    }
+  },
+  "projects": {
+    "default": "dnd-helper-2023"
+  }
+}

@@ -1,0 +1,11 @@
+<body>
+<div id="character-form">
+    <h2>Jelentkezz be a már meglévő fiókodba!</h2>
+
+    <span><label for="email">Email: </label><input type="text" [formControl]="email"/></span>
+    <span><label for="password">Password: </label><input type="password" [formControl]="password"/></span>
+    <span>
+        <button (click)="login()">Login</button>
+    </span>
+</div>
+</body>
