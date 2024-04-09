@@ -1,1 +1,26 @@
-<p>karakterek works!</p>
+<body>
+
+    <div>
+<table>
+    <tr>
+      <th>Character Name</th>
+      <th>Race</th>
+      <th>Class</th>
+      <th>HP</th>
+      <th>Attack</th>
+      <th>Defense</th>
+      <th>Story</th>
+    </tr>
+    <tr *ngFor="let character of characters | async">
+        <td>{{character.charactername}}</td>
+      <td>{{character.race}}</td>
+      <td>{{character.class}}</td>
+      <td>{{character.hp}}</td>
+      <td>{{character.attack}}</td>
+      <td>{{character.defense}}</td>
+      <td>{{character.story}}</td>
+    </tr>
+  </table>
+</div>
+</body>
+
