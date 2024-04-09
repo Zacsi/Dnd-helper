@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { FormControl,FormGroup } from '@angular/forms';
+import { AngularFirestore } from '@angular/fire/compat/firestore';
 
 interface Character {
   charactername: string;
@@ -28,29 +29,37 @@ export class KrealasComponent implements OnInit {
     story: new FormControl('')
   });
 
-  constructor() { }
+  constructor(private afs: AngularFirestore) { }
 
-ngOnInit(): void {
-}
+  ngOnInit(): void {
+    this.fetchCharacters();
+  }
+  
+  fetchCharacters() {
+    this.afs.collection<Character>('characters').valueChanges().subscribe(characters => {
+      this.characters = characters;
+    }, error => {
+      console.error('Error fetching characters: ', error);
+    });
+  }
 
 
 characters: Character[] = [];
 
 onSubmit() {
-  const formValue = this.createfrom.value;
-  const character: Character = {
-    charactername: formValue.charactername || '',
-    race: formValue.race || '',
-    class: formValue.class || '',
-    hp: formValue.hp ? +formValue.hp : 0,
-    attack: formValue.attack ? +formValue.attack : 0,
-    defense: formValue.defense ? +formValue.defense : 0,
-    story: formValue.story || '',
-  };
-  this.characters.push(character);
+  const character = this.createfrom.value;
+  this.afs.collection('characters').add(character)
+    .then(() => {
+      console.log('Character added successfully');
+            this.fetchCharacters();
+    })
+    .catch(error => {
+      console.error('Error adding character: ', error);
+    });
   this.createfrom.reset();
 }
 }
+
 
 
 
