@@ -1,12 +1,12 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
-import { KrealasComponent } from './krealas.component';
+import { EllensegKrealasComponent } from './ellenseg-krealas.component';
 
 const routes: Routes = [
-  { path: '', component: KrealasComponent}
+  { path: '', component: EllensegKrealasComponent}
 ];
 @NgModule({
   imports: [RouterModule.forChild(routes)],
   exports: [RouterModule]
 })
-export class KrealasRoutingModule { }
+export class EllensegKrealasRoutingModule { }

@@ -1,0 +1,26 @@
+<body>
+
+    <div>
+<table>
+    <tr>
+      <th>Enemy Name</th>
+      <th>Race</th>
+      <th>Class</th>
+      <th>HP</th>
+      <th>Attack</th>
+      <th>Defense</th>
+      <th>Story</th>
+    </tr>
+    <tr *ngFor="let enemy of enemies | async">
+        <td>{{enemy.enemyname}}</td>
+      <td>{{enemy.race}}</td>
+      <td>{{enemy.class}}</td>
+      <td>{{enemy.hp}}</td>
+      <td>{{enemy.attack}}</td>
+      <td>{{enemy.defense}}</td>
+      <td>{{enemy.story}}</td>
+    </tr>
+  </table>
+</div>
+</body>
+

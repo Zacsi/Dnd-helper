@@ -21,37 +21,35 @@
     </div>
 
   <div class="card-container" *ngIf="showDiv">
-    
-    <a class="card" routerLink="/krealas">
+    <a class="card" target="_blank" rel="noopener">
       <img src="assets/sword.png" class="material-icons" width="24" height="24" alt="Icon 1">
-      <span>Karakter készítés</span>
+      <span>Harc mód</span>
       <img src="assets/sword.png" class="material-icons" width="24" height="24" alt="Icon 2">
     </a>
     <a class="card" routerLink="/login">
       <img src="assets/sword.png" class="material-icons" width="24" height="24" alt="Icon 1">
-      <span>Login</span>
+      <span>Bejelentkezés</span>
       <img src="assets/sword.png" class="material-icons" width="24" height="24" alt="Icon 2">
     </a>
     <a class="card" routerLink="/signup">
       <img src="assets/sword.png" class="material-icons" width="24" height="24" alt="Icon 1">
-      <span>Signup</span>
+      <span>Regisztráció</span>
+      <img src="assets/sword.png" class="material-icons" width="24" height="24" alt="Icon 2">
+    </a>
+    <a class="card" routerLink="/krealas">
+      <img src="assets/sword.png" class="material-icons" width="24" height="24" alt="Icon 1">
+      <span>Hős hozzáadása</span>
       <img src="assets/sword.png" class="material-icons" width="24" height="24" alt="Icon 2">
     </a>
     <a class="card" target="_blank" rel="noopener">
       <img src="assets/sword.png" class="material-icons" width="24" height="24" alt="Icon 1">
-        <span>Kalandok hozzáadása</span>
+        <span>Tárgy hozzáadása</span>
       <img src="assets/sword.png" class="material-icons" width="24" height="24" alt="Icon 1">
     </a>
 
-    <a class="card" target="_blank" rel="noopener">
+    <a class="card" routerLink="/ellenseg-krealas">
       <img src="assets/sword.png" class="material-icons" width="24" height="24" alt="Icon 1">
-      <span>Ellenségek hozzáadása</span>
-      <img src="assets/sword.png" class="material-icons" width="24" height="24" alt="Icon 2">
-    </a>
-
-    <a class="card" target="_blank" rel="noopener">
-      <img src="assets/sword.png" class="material-icons" width="24" height="24" alt="Icon 1">
-      <span>Harc mód</span>
+      <span>Ellenség hozzáadása</span>
       <img src="assets/sword.png" class="material-icons" width="24" height="24" alt="Icon 2">
     </a>
 
@@ -83,7 +81,7 @@
       <span>Saját Karaktereim</span>
     </button>
 
-    <button class="card card-small" (click)="selection.value = 'dependency'" tabindex="0">
+    <button class="card card-small" routerLink="/ellensegek" (click)="selection.value = 'dependency'" tabindex="0">
       <svg class="material-icons" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"><path d="M19 13h-6v6h-2v-6H5v-2h6V5h2v6h6v2z"/></svg>
       <span>Ellenségek</span>
     </button>

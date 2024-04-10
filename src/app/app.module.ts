@@ -14,12 +14,14 @@ import { provideFirestore,getFirestore } from '@angular/fire/firestore';
 import { provideStorage,getStorage } from '@angular/fire/storage';
 import { AngularFireModule } from '@angular/fire/compat';
 import { FormsModule } from '@angular/forms';
+//import { EllensegekComponent } from './pages/ellensegek/ellensegek.component';
+//import { EllensegKrealasComponent } from './pages/ellenseg-krealas/ellenseg-krealas.component';
 
 
 @NgModule({
   declarations: [
     AppComponent,
-    MenuComponent
+    MenuComponent,
   ],
   imports: [
     BrowserModule,

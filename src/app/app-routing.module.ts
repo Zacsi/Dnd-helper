@@ -21,8 +21,8 @@ const routes: Routes = [
 { path: 'login', loadChildren: () => import('./pages/login/login.module').then(m => m.LoginModule) },
 { path: 'signup', loadChildren: () => import('./pages/signup/signup.module').then(m => m.SignupModule) },
 { path: 'dobokocka', loadChildren: () => import('./pages/dobokocka/dobokocka.module').then(m => m.DobokockaModule) },
-
-
+{ path: 'ellenseg-krealas', loadChildren: () => import('./pages/ellenseg-krealas/ellenseg-krealas.module').then(m => m.EllensegKrealasModule) },
+{ path: 'ellensegek', loadChildren: () => import('./pages/ellensegek/ellensegek.module').then(m => m.EllensegekModule) },
 
 
 ];
