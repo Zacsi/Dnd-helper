@@ -1,12 +1,19 @@
 <body>
     <div id="character-form">
-        <h2>Dobj egyet a D20 dobókockával 1-20 között</h2>
+        <h2>Dobás a kiválasztott kockával</h2>
         <img src="assets/dice2.png" height="100px" alt="D20 Dice">
+        <br>        
 
+        
+        <select [(ngModel)]="selectedDice" (change)="updateMaxValue(selectedDice)">
+            <option value="3">D3</option>
+            <option value="6">D6</option>
+            <option value="12">D12</option>
+            <option value="20" selected>D20</option>
+        </select>        
+        <br>
+        <button (click)="generateRandomNumber()">Dobás!</button>
 
-            <button (click)="generateRandomNumber()">Dobás!</button>
-
-            <h2>{{randomNumber}}</h2>
-</div>
+        <h2>{{randomNumber}}</h2>
+    </div>
 </body>
-

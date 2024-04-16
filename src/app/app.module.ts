@@ -16,12 +16,14 @@ import { AngularFireModule } from '@angular/fire/compat';
 import { FormsModule } from '@angular/forms';
 //import { EllensegekComponent } from './pages/ellensegek/ellensegek.component';
 //import { EllensegKrealasComponent } from './pages/ellenseg-krealas/ellenseg-krealas.component';
+//import { DobokockaComponent } from './pages/dobokocka/dobokocka.component';
+
 
 
 @NgModule({
   declarations: [
     AppComponent,
-    MenuComponent,
+    MenuComponent
   ],
   imports: [
     BrowserModule,
