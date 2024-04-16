@@ -1,3 +1,4 @@
+
 import { Component, OnInit } from '@angular/core';
 import { AngularFirestore } from '@angular/fire/compat/firestore';
 import { Observable, EMPTY } from 'rxjs';
@@ -37,46 +38,72 @@ export class HarcComponent implements OnInit {
     let defense2 = this.selectedSecond.defense || 0;
     this.battleLog = [];
   
-    while (hp1 > 0 && hp2 > 0) { //TODO ha bekövetkezik akkor csak az egyiknél kellene hogy bekövetkezzen ne mindkét félnél
-      let eventLog = [];  // Tömb a kör eseményeinek rögzítésére
+    while (hp1 > 0 && hp2 > 0) {
+      let eventLog = [];
+      let attacker = Math.random() < 0.5 ? this.selectedFirst : this.selectedSecond; // Véletlenszerű kiválasztás
+  
+      let attackModifier = 1;
+      let defenseModifier = 1;
       let criticalHitChance = Math.random() < 0.1;
       let missChance = Math.random() < 0.1;
       let stumbleChance = Math.random() < 0.1;
   
-      let attackModifier = 1 + (Math.random() * 0.2 - 0.1);
-      let defenseModifier = 1 + (Math.random() * 0.2 - 0.1);
+      if (attacker === this.selectedFirst) {
+        attackModifier = 1 + (Math.random() * 0.2 - 0.1);
+        defenseModifier = defense2;
   
-      if (criticalHitChance) {
-        attackModifier *= 2;
-        eventLog.push('kritikus ütés');
-      }
-      if (missChance) {
-        eventLog.push('melléütés');
-      }
-      if (stumbleChance) {
-        defenseModifier *= 0.5;
-        eventLog.push('botlás');
+        if (criticalHitChance) {
+          attackModifier *= 2;
+          eventLog.push('kritikus ütés');
+        }
+        if (missChance) {
+          attackModifier = 0;
+          eventLog.push('melléütés');
+        }
+        if (stumbleChance) {
+          defenseModifier *= 0.5;
+          eventLog.push('botlás');
+        }
+      } else {
+        attackModifier = 1 + (Math.random() * 0.2 - 0.1);
+        defenseModifier = defense1;
+  
+        if (criticalHitChance) {
+          attackModifier *= 2;
+          eventLog.push('kritikus ütés');
+        }
+        if (missChance) {
+          attackModifier = 0;
+          eventLog.push('melléütés');
+        }
+        if (stumbleChance) {
+          defenseModifier *= 0.5;
+          eventLog.push('botlás');
+        }
       }
   
-      let damageToSecond = missChance ? 0 : Math.max((attack1 * attackModifier) - (defense2 * defenseModifier), 0);
-      let damageToFirst = missChance ? 0 : Math.max((attack2 * attackModifier) - (defense1 * defenseModifier), 0);
+      let damageToSecond = attacker === this.selectedFirst ? Math.max((attack1 * attackModifier) - defenseModifier, 0) : 0;
+      let damageToFirst = attacker === this.selectedSecond ? Math.max((attack2 * attackModifier) - defenseModifier, 0) : 0;
   
       hp2 -= damageToSecond;
       hp1 -= damageToFirst;
   
-      this.battleLog.push(`${this.selectedFirst.charactername} üt ${damageToSecond.toFixed(1)} sebzést; ${this.selectedSecond.enemyname} maradt ${Math.max(hp2, 0).toFixed(1)} HP (${eventLog.join(', ')})`);
-      if (hp2 <= 0) break;  // Ellenőrzés, hogy az ellenség kiesett-e
-  
-      this.battleLog.push(`${this.selectedSecond.enemyname} üt ${damageToFirst.toFixed(1)} sebzést; ${this.selectedFirst.charactername} maradt ${Math.max(hp1, 0).toFixed(1)} HP (${eventLog.join(', ')})`);
-      if (hp1 <= 0) break;  // Ellenőrzés, hogy a karakter kiesett-e
+      if (attacker === this.selectedFirst) {
+        this.battleLog.push(`${this.selectedFirst.name} üt ${damageToSecond.toFixed(1)} sebzést; ${this.selectedSecond.name} maradt ${Math.max(hp2, 0).toFixed(1)} HP (${eventLog.join(', ')})`);
+      } else {
+        this.battleLog.push(`${this.selectedSecond.name} üt ${damageToFirst.toFixed(1)} sebzést; ${this.selectedFirst.name} maradt ${Math.max(hp1, 0).toFixed(1)} HP (${eventLog.join(', ')})`);
+      }
+      
+      if (hp2 <= 0 || hp1 <= 0) break;  // Ellenőrzés, hogy valaki kiesett-e
     }
   
     if (hp1 > 0) {
-      this.result = `${this.selectedFirst.charactername} győzött!`;
+      this.result = `${this.selectedFirst.name} győzött!`;
     } else if (hp2 > 0) {
-      this.result = `${this.selectedSecond.enemyname} győzött!`;
+      this.result = `${this.selectedSecond.name} győzött!`;
     } else {
       this.result = "Döntetlen!";
     }
   }
+  
 }

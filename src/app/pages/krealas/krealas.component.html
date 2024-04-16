@@ -3,7 +3,7 @@
     <div>
       <h2>Készítsd el a saját hősödet online!</h2>
       <form id="character-form" [formGroup]="createfrom" (ngSubmit)="onSubmit()">
-          <div><label for="charactername">Hero name: </label><input type="text" placeholder="Conan" formControlName="charactername"/></div>
+          <div><label for="name">Hero name: </label><input type="text" placeholder="Conan" formControlName="name"/></div>
           <div><label for="race">Race: </label><input type="text" placeholder="dwarf,elf,human,etc.." formControlName="race"/></div>
           <div><label for="class">class: </label><input type="text" placeholder="warrior,mage,barbar,etc.." formControlName="class"/></div>
           <div><label for="hp">hp: </label><input type="number" placeholder="pl:120" formControlName="hp"/></div>

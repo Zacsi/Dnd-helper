@@ -20,7 +20,7 @@ interface Character {
 export class KrealasComponent implements OnInit {
 
   createfrom = new FormGroup({
-    charactername: new FormControl(''),
+    name: new FormControl(''),
     race: new FormControl(''),
     class: new FormControl(''),
     hp: new FormControl(0),

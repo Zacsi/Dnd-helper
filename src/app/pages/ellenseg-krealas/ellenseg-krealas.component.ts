@@ -20,7 +20,7 @@ interface Enemy {
 export class EllensegKrealasComponent implements OnInit {
 
   createfrom = new FormGroup({
-    enemyname: new FormControl(''),
+    name: new FormControl(''),
     race: new FormControl(''),
     class: new FormControl(''),
     hp: new FormControl(0),
