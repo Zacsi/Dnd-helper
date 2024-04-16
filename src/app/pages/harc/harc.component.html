@@ -1,0 +1,28 @@
+<div>
+    <label for="first-character">Első karakter kiválasztása:</label>
+    <select [(ngModel)]="selectedFirst" id="first-character">
+      <option *ngFor="let character of characters | async" [ngValue]="character">
+        {{ character.charactername }}
+      </option>
+    </select>
+  
+    <label for="second-character">Második résztvevő (Ellenség) kiválasztása:</label>
+    <select [(ngModel)]="selectedSecond" id="second-character">
+      <option *ngFor="let enemy of enemies | async" [ngValue]="enemy">
+        {{ enemy.enemyname }}
+      </option>
+    </select>
+  
+    <button (click)="simulateBattle()">Harcolj!</button>
+  </div>
+  
+  <div *ngIf="result">
+    <h3>Eredmény: {{ result }}</h3>
+  </div>
+  
+  <div *ngIf="battleLog.length > 0">
+    <h4>Harci Napló:</h4>
+    <ul>
+      <li *ngFor="let entry of battleLog">{{ entry }}</li>
+    </ul>
+  </div>

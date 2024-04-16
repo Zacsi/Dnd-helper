@@ -8,7 +8,7 @@ import { Observable, EMPTY } from 'rxjs';
   styleUrls: ['./ellensegek.component.scss']
 })
 export class EllensegekComponent implements OnInit {
-  enemies: Observable<any[]> = EMPTY; // EMPTY is an observable that completes immediately
+  enemies: Observable<any[]> = EMPTY;
 
   constructor(private firestore: AngularFirestore) {}
 
