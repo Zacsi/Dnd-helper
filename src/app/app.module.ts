@@ -1,6 +1,6 @@
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
-
+import { AngularFireStorageModule } from '@angular/fire/compat/storage';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 //import { MainComponent } from './pages/main/main.component';
@@ -35,7 +35,9 @@ import { FormsModule } from '@angular/forms';
     provideFirebaseApp(() => initializeApp(environment.firebase)),
     provideAuth(() => getAuth()),
     provideFirestore(() => getFirestore()),
-    provideStorage(() => getStorage())
+    provideStorage(() => getStorage()),
+    AngularFireStorageModule  // This should be included
+
   ],
   providers: [],
   bootstrap: [AppComponent]

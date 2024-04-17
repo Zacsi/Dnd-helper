@@ -10,13 +10,10 @@
           <div><label for="price">Price (coin): </label><input type="number" placeholder="pl:120" formControlName="price"/></div>
           <div><label for="minimumlevel">Minimum level: </label><input type="number" placeholder="pl:120" formControlName="minimumlevel"/></div>
           <div><label for="story">Story: </label><input type="text" placeholder="long long time ago" formControlName="story"/></div>
-          <!--<div><label for="picture">Picture: </label><input type="image" formControlName="picture"/></div>-->
+          <div><label for="item-image">Picture: </label><input type="file" id="item-image" (change)="onFileSelected($event)" accept="image/*"></div>
           <div>
               <button type="submit">Create</button>
           </div>
   </form>
 </div>
-
-
-  
  </body>

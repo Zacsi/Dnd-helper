@@ -1,4 +1,5 @@
 export const environment = {
+  production: false,
   firebase: {
     projectId: 'dnd-helper-2023',
     appId: '1:790082593347:web:cb2bc4940e0ee5fb0f2af6',
