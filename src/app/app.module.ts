@@ -14,6 +14,7 @@ import { provideFirestore,getFirestore } from '@angular/fire/firestore';
 import { provideStorage,getStorage } from '@angular/fire/storage';
 import { AngularFireModule } from '@angular/fire/compat';
 import { FormsModule } from '@angular/forms';
+//import { TargyakComponent } from './pages/targyak/targyak.component';
 //import { TargyComponent } from './pages/targy/targy.component';
 //import { HarcComponent } from './pages/harc/harc.component';
 //import { EllensegekComponent } from './pages/ellensegek/ellensegek.component';
@@ -26,6 +27,7 @@ import { FormsModule } from '@angular/forms';
   declarations: [
     AppComponent,
     MenuComponent,
+    //TargyakComponent,
   ],
   imports: [
     BrowserModule,
