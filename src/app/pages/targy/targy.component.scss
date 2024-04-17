@@ -1,0 +1,39 @@
+body {
+    background-color: #462f1a;
+    color: #ffffff;
+    font-family: Arial, sans-serif;
+    text-align: center;
+  }
+  
+  #object-form {
+    margin-top: 100px;
+  }
+  
+  #object-form input, textarea, button {
+    display: block;
+    margin: 0 auto;
+    margin-bottom: 20px;
+  }
+  
+  #object-form input[type="file"] {
+    color: transparent;
+  }
+  
+  #object-form .radio-group {
+  display: flex;
+  justify-content: center;
+  gap: 10px;
+  }
+  
+  @media (min-width: 600px) {
+    #object-form {
+      width: 100%;
+      max-width: 600px;
+      margin: 0 auto;
+    }
+  
+    table, th, td {
+      border: 1px solid white;
+      
+    }
+  }

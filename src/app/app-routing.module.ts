@@ -24,6 +24,7 @@ const routes: Routes = [
 { path: 'ellenseg-krealas', loadChildren: () => import('./pages/ellenseg-krealas/ellenseg-krealas.module').then(m => m.EllensegKrealasModule) },
 { path: 'ellensegek', loadChildren: () => import('./pages/ellensegek/ellensegek.module').then(m => m.EllensegekModule) },
 { path: 'harc', loadChildren: () => import('./pages/harc/harc.module').then(m => m.HarcModule) },
+{ path: 'targy', loadChildren: () => import('./pages/targy/targy.module').then(m => m.TargyModule) },
 
 
 ];
