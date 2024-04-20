@@ -30,4 +30,11 @@ export class LoginComponent {
       });
     }
   }
+  signOut() {
+    this.authService.signOut().then(() => {
+      this.router.navigateByUrl('/login');
+    }).catch(error => {
+      console.error('Failed to sign out:', error);
+    });
+}
 }

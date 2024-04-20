@@ -26,8 +26,7 @@ const routes: Routes = [
 { path: 'harc', loadChildren: () => import('./pages/harc/harc.module').then(m => m.HarcModule) },
 { path: 'targy', loadChildren: () => import('./pages/targy/targy.module').then(m => m.TargyModule) },
 { path: 'targyak', loadChildren: () => import('./pages/targyak/targyak.module').then(m => m.TargyakModule) },
-
-
+{ path: 'live', loadChildren: () => import('./pages/live/live.module').then(m => m.LiveModule) },
 
 ];
 
