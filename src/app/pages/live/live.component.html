@@ -4,4 +4,31 @@
   </div>
   <input [(ngModel)]="newMessage" type="text" placeholder="Type a message...">
   <button (click)="sendMessage()">Send</button>
-  
+<!-- live.component.html -->
+<div>
+  <input [(ngModel)]="newCharacterName" placeholder="Enter character name" type="text">
+  <button (click)="addHero()">Add Hero</button>
+  <button (click)="addEnemy()">Add Enemy</button>
+  <button (click)="fileInput.click()">Select Map</button>
+<input type="file" #fileInput style="display: none" (change)="onFileSelected($event)">
+</div>
+<div class="map">
+  <div *ngFor="let row of map; let i = index" class="row">
+    <div *ngFor="let cell of row; let j = index"
+         class="cell"
+         (drop)="onDrop($event, cell)"
+         (dragover)="allowDrop($event)"
+         [attr.data-x]="i"
+         [attr.data-y]="j">
+      <div *ngIf="cell.character"
+           draggable="true"
+           (dragstart)="onDrag($event, cell.character)"
+           class="character">
+        {{ cell.character.name }}
+        <button class="remove-btn" (click)="removeCharacter(cell)">&#10005;</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+

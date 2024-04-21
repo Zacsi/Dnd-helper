@@ -1,0 +1,52 @@
+/* live.component.scss */
+.map .row {
+    display: flex;
+  }
+
+.map {
+    position: relative;
+    background-size: cover;
+    background-position: center;
+    min-height: 100%;  /* Adjust based on your needs */
+  }
+  
+  .map .row .cell {
+    width: 50px;  /* Adjust width if necessary */
+    height: 50px; /* Adjust height if necessary */
+    border: 1px solid #ccc;
+    position: relative;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    box-sizing: border-box; /* Ensures padding and border are included in the size */
+  }
+  
+  .character {
+    background-color: #f0f0f0;
+    cursor: grab;
+    position: relative;
+    width: calc(100% - 10px); /* Adjust width based on padding */
+    height: calc(100% - 10px); /* Adjust height based on padding */
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    box-sizing: border-box; /* Include padding in size calculations */
+    padding: 5px;
+    overflow: hidden; /* Prevents content from spilling out */
+    text-overflow: ellipsis; /* Ensures text does not overflow */
+    white-space: nowrap; /* Keeps the name on one line */
+  }
+  
+  .remove-btn {
+    position: absolute;
+    top: 0;
+    right: 0;
+    border: none;
+    background: none;
+    cursor: pointer;
+    color: red;
+    font-weight: bold;
+    font-size: 12px; /* Adjust size as necessary */
+    padding: 2px 5px;
+  }
+  
