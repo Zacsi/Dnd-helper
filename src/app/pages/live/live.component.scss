@@ -11,14 +11,15 @@
   }
   
   .map .row .cell {
-    width: 50px;  /* Adjust width if necessary */
-    height: 50px; /* Adjust height if necessary */
-    border: 1px solid #ccc;
+    width: 50px;  /* Set to your desired size */
+    height: 50px; /* Set to your desired size */
+    border: 1px solid #ccc; /* Slight border to see grid lines */
     position: relative;
     display: flex;
     align-items: center;
     justify-content: center;
-    box-sizing: border-box; /* Ensures padding and border are included in the size */
+    background-color: rgba(255, 255, 255, 0.5); /* Semi-transparent white */
+    box-sizing: border-box;
   }
   
   .character {

@@ -155,5 +155,15 @@ export class LiveComponent implements OnInit {
       this.newMessage = ''; // Clear message input after attempt to send
     }
   }
-  
+  clearChatHistory(): void {
+    this.chatService.clearHistory(this.chatId).subscribe({
+      next: () => {
+        console.log('Chat history cleared successfully');
+        this.messages = []; // Clear messages in the component state
+      },
+      error: (error) => {
+        console.error('Failed to clear chat history', error);
+      }
+    });
+  }
 }

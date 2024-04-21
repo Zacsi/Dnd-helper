@@ -1,7 +1,9 @@
 import { Injectable } from '@angular/core';
 import { AngularFirestore } from '@angular/fire/compat/firestore';
 import { AngularFireAuth } from '@angular/fire/compat/auth';
-import { map } from 'rxjs/operators';
+import { map, switchMap } from 'rxjs/operators';
+import { Observable,from } from 'rxjs';
+
 
 @Injectable({
   providedIn: 'root'
@@ -32,5 +34,27 @@ export class ChatService {
 
   getMessages(chatId: string) {
     return this.firestore.collection(`chats/${chatId}/messages`, ref => ref.orderBy('timestamp', 'asc')).valueChanges();
+  }
+  clearHistory(chatId: string) {
+    return this.afAuth.authState.pipe(
+      switchMap(user => {
+        if (user) {
+          const ref = this.firestore.collection(`chats/${chatId}/messages`);
+          return ref.get().pipe(
+            switchMap(querySnapshot => {
+              // Create a batch operation
+              const batch = this.firestore.firestore.batch();
+              querySnapshot.forEach(doc => {
+                batch.delete(doc.ref);
+              });
+              // Commit the batch
+              return from(batch.commit());
+            })
+          );
+        } else {
+          throw new Error('User not authenticated');
+        }
+      })
+    );
   }
 }

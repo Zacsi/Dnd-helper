@@ -4,7 +4,9 @@
   </div>
   <input [(ngModel)]="newMessage" type="text" placeholder="Type a message...">
   <button (click)="sendMessage()">Send</button>
-<!-- live.component.html -->
+  <button (click)="clearChatHistory()">Clear Chat History</button>
+
+<!-- map.component.html -->
 <div>
   <input [(ngModel)]="newCharacterName" placeholder="Enter character name" type="text">
   <button (click)="addHero()">Add Hero</button>
