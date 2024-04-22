@@ -1,6 +1,8 @@
 // chat.component.ts
 import { Component, OnInit } from '@angular/core';
 import { ChatService } from './chat.service';
+import { MapService } from './map.service';
+
 
 interface Character {
   id: number;
@@ -22,6 +24,7 @@ interface MapCell {
   styleUrls: ['./live.component.scss']
 })
 export class LiveComponent implements OnInit {
+  mapId = 'map_001';
   mapSize = 20;
   map: MapCell[][] = [];
   characters: Character[] = [
@@ -35,7 +38,7 @@ export class LiveComponent implements OnInit {
   newMessage: string = '';
   chatId = 'defaultChatId'; // This should be dynamically set based on the chat context
 
-  constructor(private chatService: ChatService) {    this.initializeGrid();}
+  constructor(private chatService: ChatService, private mapService: MapService) {    this.initializeGrid();}
 
   onFileSelected(event: any): void {
     const file = event.target.files[0];
@@ -74,7 +77,6 @@ export class LiveComponent implements OnInit {
     }
   }
   
-
   addCharacter(type: 'hero' | 'enemy'): void {
     if (!this.newCharacterName.trim()) {
       alert('Please enter a name for the character.');
@@ -146,6 +148,38 @@ export class LiveComponent implements OnInit {
     this.chatService.getMessages(this.chatId).subscribe(messages => {
       this.messages = messages;
     });
+    this.loadMapState(this.mapId);
+  }
+
+  loadMapState(mapId: string) {
+    this.mapService.getMapState(mapId).subscribe(data => {
+      if (data && data.cells) {
+        const cellMap = new Map(data.cells.map(cell => [`${cell.x},${cell.y}`, cell]));
+        this.map = Array.from({ length: this.mapSize }, (_, x) => 
+          Array.from({ length: this.mapSize }, (_, y) => {
+            const key = `${x},${y}`;
+            const cell = cellMap.get(key);
+            return {
+              x,
+              y,
+              character: cell ? cell.character : null
+            };
+          })
+        );
+        console.log('Map state loaded successfully');
+      }
+    }, error => {
+      console.error('Error loading map state:', error);
+    });
+  }
+  saveMap(): void {
+    this.mapService.saveMapState(this.mapId, this.map)
+      .then(() => {
+        console.log('Map saved successfully');
+      })
+      .catch(error => {
+        console.error('Failed to save the map:', error);
+      });
   }
 
   sendMessage() {
