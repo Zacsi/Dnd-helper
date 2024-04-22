@@ -22,7 +22,6 @@ interface MapCell {
   styleUrls: ['./live.component.scss']
 })
 export class LiveComponent implements OnInit {
-  mapBackgroundUrl: string | ArrayBuffer | null = '';
   mapSize = 20;
   map: MapCell[][] = [];
   characters: Character[] = [
@@ -30,7 +29,7 @@ export class LiveComponent implements OnInit {
   ];
   nextId = 2; // Start with ID 2 since 1 is taken
   newCharacterName: string = '';
-
+  mapBackgroundUrl: string | ArrayBuffer | null = "assets/defaultbg.jpg"; // Set a default background
 
   messages: any[] = [];
   newMessage: string = '';

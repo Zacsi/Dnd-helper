@@ -11,11 +11,11 @@
   <input [(ngModel)]="newCharacterName" placeholder="Enter character name" type="text">
   <button (click)="addHero()">Add Hero</button>
   <button (click)="addEnemy()">Add Enemy</button>
-  <button (click)="fileInput.click()">Select Map</button>
+  <button (click)="fileInput.click()">Select New Map</button>
 <input type="file" #fileInput style="display: none" (change)="onFileSelected($event)">
 </div>
 <div class="map-container">
-  <div class="map" *ngIf="mapBackgroundUrl" [style.background-image]="'url(' + mapBackgroundUrl + ')'">
+  <div class="map" [style.background-image]="'url(' + mapBackgroundUrl + ')'">
     <div *ngFor="let row of map; let i = index" class="row">
       <div *ngFor="let cell of row; let j = index"
            class="cell"
