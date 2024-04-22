@@ -8,6 +8,8 @@
     background-size: cover;
     background-position: center;
     min-height: 100%;  /* Adjust based on your needs */
+    z-index: 2; /* Higher z-index to ensure it is on top */
+
   }
   
   .map .row .cell {
@@ -21,21 +23,35 @@
     background-color: rgba(255, 255, 255, 0.5); /* Semi-transparent white */
     box-sizing: border-box;
   }
+
+  .map-container {
+    position: relative;
+    width: fit-content; /* Adjust to fit your map or image size */
+    height: fit-content; /* Adjust to fit your map or image size */
+  }
+  
+  .background-image {
+    width: 100%; /* Adjust if needed */
+    display: block; /* Remove extra space below the image */
+    z-index: 1; /* Lower z-index than the map */
+  }
   
   .character {
-    background-color: #f0f0f0;
+    background-color: #f0f0f0; /* Light background for contrast, adjust as needed */
+    border: 1px solid #000; /* Optional, adds definition */
+    box-shadow: 0 0 5px #000; /* Optional, adds visibility through shadow */
     cursor: grab;
     position: relative;
-    width: calc(100% - 10px); /* Adjust width based on padding */
-    height: calc(100% - 10px); /* Adjust height based on padding */
+    width: calc(100% - 10px);
+    height: calc(100% - 10px);
     display: flex;
     align-items: center;
     justify-content: center;
-    box-sizing: border-box; /* Include padding in size calculations */
+    box-sizing: border-box;
     padding: 5px;
-    overflow: hidden; /* Prevents content from spilling out */
-    text-overflow: ellipsis; /* Ensures text does not overflow */
-    white-space: nowrap; /* Keeps the name on one line */
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
   }
   
   .remove-btn {
@@ -49,5 +65,12 @@
     font-weight: bold;
     font-size: 12px; /* Adjust size as necessary */
     padding: 2px 5px;
+  }
+  .preview-img {
+    width: 100px;  /* Set as needed */
+    height: auto;
+    margin-top: 10px;  /* Space above the image */
+    border: 1px solid #ccc; /* Optional border */
+    display: block;
   }
   

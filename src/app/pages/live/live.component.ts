@@ -23,7 +23,7 @@ interface MapCell {
 })
 export class LiveComponent implements OnInit {
   mapBackgroundUrl: string | ArrayBuffer | null = '';
-  mapSize = 15;
+  mapSize = 20;
   map: MapCell[][] = [];
   characters: Character[] = [
     { id: 1, name: 'Hero', type: 'hero', position: { x: 0, y: 0 } }
