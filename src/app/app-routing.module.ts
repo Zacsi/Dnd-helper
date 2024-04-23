@@ -27,6 +27,7 @@ const routes: Routes = [
 { path: 'targy', loadChildren: () => import('./pages/targy/targy.module').then(m => m.TargyModule) },
 { path: 'targyak', loadChildren: () => import('./pages/targyak/targyak.module').then(m => m.TargyakModule) },
 { path: 'live', loadChildren: () => import('./pages/live/live.module').then(m => m.LiveModule) },
+{ path: 'myhero', loadChildren: () => import('./pages/myhero/myhero.module').then(m => m.MyheroModule) },
 
 ];
 

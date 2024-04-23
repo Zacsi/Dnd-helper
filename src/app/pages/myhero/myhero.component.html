@@ -1,0 +1,23 @@
+<div>
+  <h2>Select Character</h2>
+  <ul>
+    <li *ngFor="let character of characters" (click)="selectCharacter(character)">
+      {{ character.name }} <!-- Ensure you use the correct property name -->
+    </li>
+  </ul>
+</div>
+
+<div *ngIf="selectedCharacter">
+  <h2>Edit Character</h2>
+  <form [formGroup]="editForm">
+    <input type="text" formControlName="name" placeholder="Name">
+    <input type="text" formControlName="race" placeholder="Race">
+    <input type="text" formControlName="class" placeholder="Class">
+    <input type="number" formControlName="hp" placeholder="HP">
+    <input type="number" formControlName="attack" placeholder="Attack">
+    <input type="number" formControlName="defense" placeholder="Defense">
+    <textarea formControlName="story" placeholder="Story"></textarea>
+    <button (click)="onSave()">Save Changes</button>
+    <button type="button" (click)="onDelete()" class="delete-btn">Delete Character</button>
+  </form>
+</div>
