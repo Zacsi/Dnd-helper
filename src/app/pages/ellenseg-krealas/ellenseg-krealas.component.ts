@@ -2,8 +2,8 @@ import { Component, OnInit } from '@angular/core';
 import { FormControl,FormGroup } from '@angular/forms';
 import { AngularFirestore } from '@angular/fire/compat/firestore';
 
-interface Enemy {
-  enemyname: string;
+export interface Enemy {
+  name: string;
   race: string;
   class: string;
   hp: number;

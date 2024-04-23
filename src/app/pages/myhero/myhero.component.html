@@ -1,14 +1,28 @@
 <div>
-  <h2>Select Character</h2>
+  <button (click)="switchMode('heroes')">Manage Heroes</button>
+  <button (click)="switchMode('enemies')">Manage Enemies</button>
+</div>
+
+<div *ngIf="mode === 'heroes'">
+  <h2>Select Hero</h2>
   <ul>
     <li *ngFor="let character of characters" (click)="selectCharacter(character)">
-      {{ character.name }} <!-- Ensure you use the correct property name -->
+      {{ character.name }}
     </li>
   </ul>
 </div>
 
-<div *ngIf="selectedCharacter">
-  <h2>Edit Character</h2>
+<div *ngIf="mode === 'enemies'">
+  <h2>Select Enemy</h2>
+  <ul>
+    <li *ngFor="let enemy of enemies" (click)="selectEnemy(enemy)">
+      {{ enemy.name }}
+    </li>
+  </ul>
+</div>
+
+<div *ngIf="selectedCharacter || selectedEnemy">
+  <h2>Edit {{ mode === 'heroes' ? 'Hero' : 'Enemy' }}</h2>
   <form [formGroup]="editForm">
     <input type="text" formControlName="name" placeholder="Name">
     <input type="text" formControlName="race" placeholder="Race">
@@ -18,6 +32,7 @@
     <input type="number" formControlName="defense" placeholder="Defense">
     <textarea formControlName="story" placeholder="Story"></textarea>
     <button (click)="onSave()">Save Changes</button>
-    <button type="button" (click)="onDelete()" class="delete-btn">Delete Character</button>
+    <button type="button" (click)="onDelete()" class="delete-btn">Delete Enemy</button>
   </form>
 </div>
+
