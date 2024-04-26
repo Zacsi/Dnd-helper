@@ -8,7 +8,10 @@
         <button (click)="login()">Login</button>
     </span>
     <nav>
-        <button (click)="signOut()">Sign Out(Ezt átrakni normális helyre, meg a logint is)</button>
+        <button (click)="signOut()">Sign Out</button>
       </nav>
+      <div *ngIf="errorMessage" class="error-message">
+        {{ errorMessage }}
+      </div>
 </div>
 </body>

@@ -1,34 +1,69 @@
+$font-stack: 'Arial', sans-serif;
+$primary-color: #887520;
+$background-color: #fff;
+$text-color: #333;
+$button-color: #834c19;
+$error-color: #ff0000;
+$padding: 8px;
+$margin: 10px;
+$border-radius: 5px;
 body {
-    background-color: #462f1a;
-    color: #ffffff;
-    font-family: Arial, sans-serif;
-    text-align: center;
-  }
-  
-  #character-form {
-    margin-top: 100px;
-  }
-  
-  #character-form input, textarea, button {
-    display: block;
-    margin: 0 auto;
-    margin-bottom: 20px;
-  }
-  
-  #character-form input[type="file"] {
-    color: transparent;
-  }
-  
-  #character-form .radio-group {
+  font-family: $font-stack;
+  color: $text-color;
+  background-color: $background-color;
   display: flex;
   justify-content: center;
-  gap: 10px;
+  align-items: center;
+  height: 50vh;
+  margin: 0;
+}
+
+h2 {
+  color: darken($primary-color, 20%);
+  margin: $margin 0;
+}
+#character-form {
+  background: white;
+  padding: 20px;
+  border-radius: $border-radius;
+  box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+  text-align: center;
+  width: 300px;
+
+  img {
+    margin-bottom: $margin;
   }
-  
-  @media (min-width: 600px) {
-    #character-form {
-      width: 100%;
-      max-width: 600px;
-      margin: 0 auto;
+
+  select {
+    padding: $padding;
+    margin-bottom: $margin;
+    border: 1px solid #ccc;
+    border-radius: $border-radius;
+    width: 100%;
+
+    &:focus {
+      border-color: $primary-color;
+      outline: none;
     }
   }
+}
+
+button {
+  width: 100%;
+  padding: $padding;
+  background-color: $button-color;
+  color: white;
+  border: none;
+  border-radius: $border-radius;
+  cursor: pointer;
+  transition: background-color 0.3s;
+
+  &:hover {
+    background-color: darken($button-color, 10%);
+  }
+}
+@media (max-width: 600px) {
+  #character-form {
+    width: 90%;
+  }
+}

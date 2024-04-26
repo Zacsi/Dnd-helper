@@ -1,7 +1,6 @@
 <body>
-
     <div>
-      <h2>Készítsd el a saját Tárgyadat!</h2>
+      <h2>Make your own weapon!</h2>
       <form id="item-form" [formGroup]="createfrom" (ngSubmit)="onSubmit()">
           <div><label for="name">Name: </label><input type="text" placeholder="BFF sword" formControlName="name"/></div>
           <div><label for="attackmodifier">Attackmodifier: </label><input type="number" placeholder="+ or - to your attack" formControlName="attackmodifier"/></div>

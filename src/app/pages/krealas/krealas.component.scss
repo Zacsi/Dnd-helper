@@ -1,39 +1,75 @@
+$font-stack: 'Arial', sans-serif;
+$primary-color: #887520;
+$background-color: #fff;
+$text-color: #333;
+$button-color: #834c19;
+$error-color: #ff0000;
+$padding: 8px;
+$margin: 10px;
+
 body {
-  background-color: #462f1a;
-  color: #ffffff;
-  font-family: Arial, sans-serif;
-  text-align: center;
-}
-
-#character-form {
-  margin-top: 100px;
-}
-
-#character-form input, textarea, button {
-  display: block;
+  font-family: $font-stack;
+  color: $text-color;
+  background-color: $background-color;
+  padding: 20px;
   margin: 0 auto;
-  margin-bottom: 20px;
+  width: 90%;
+  max-width: 600px;
 }
 
-#character-form input[type="file"] {
-  color: transparent;
+h2 {
+  color: darken($primary-color, 20%);
+}
+form {
+  
+  display: flex;
+  flex-direction: column;
+  gap: $margin;
+
+  div {
+    display: flex;
+    flex-direction: column;
+    label {
+      margin-bottom: 5px;
+    }
+    input[type="text"],
+    input[type="number"],
+    input[type="file"] {
+      padding: $padding;
+      margin-top: 5px;
+      border: 1px solid lighten($primary-color, 40%);
+      border-radius: 4px;
+
+      &:focus {
+        border-color: $primary-color;
+        outline: none;
+      }
+    }
+  }
 }
 
-#character-form .radio-group {
-display: flex;
-justify-content: center;
-gap: 10px;
-}
+button {
+  background-color: $button-color;
+  color: $background-color;
+  padding: $padding 0;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
 
-@media (min-width: 600px) {
-  #character-form {
-    width: 100%;
-    max-width: 600px;
-    margin: 0 auto;
+  &:hover {
+    background-color: darken($button-color, 10%);
   }
 
-  table, th, td {
-    border: 1px solid white;
-    
+  &:disabled {
+    background-color: #ccc;
   }
+}
+.error-message {
+  color: $error-color;
+  font-size: 0.8em;
+}
+
+input.ng-invalid.ng-touched {
+  border-color: $error-color;
 }

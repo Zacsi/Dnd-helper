@@ -1,0 +1,80 @@
+$font-stack: 'Arial', sans-serif;
+$primary-color: #c0392b; // A bold red, reminiscent of battle.
+$secondary-color: #27ae60; // A strong green, representing vitality.
+$background-color: #ecf0f1;
+$text-color: #34495e;
+$button-color: #834c19;
+$padding: 10px;
+$margin: 10px;
+$border-radius: 4px;
+body {
+    font-family: $font-stack;
+    color: $text-color;
+    background-color: $background-color;
+    padding: 20px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+  h2 {
+    color: darken($primary-color, 20%);
+  }
+  
+  h3, h4 {
+    color: $secondary-color;
+  }
+  div {
+  margin-bottom: $margin;
+  label {
+    display: block;
+    margin-bottom: 5px;
+    color: darken($primary-color, 10%);
+  }
+
+  select {
+    width: 100%;
+    padding: $padding;
+    border: 1px solid lighten($primary-color, 10%);
+    border-radius: $border-radius;
+    margin-bottom: $margin;
+
+    &:focus {
+      border-color: $primary-color;
+      outline: none;
+    }
+  }
+}
+
+button {
+  width: 100%;
+  padding: $padding;
+  background-color: $button-color;
+  color: white;
+  border: none;
+  border-radius: $border-radius;
+  cursor: pointer;
+  transition: background-color 0.3s;
+
+  &:hover {
+    background-color: darken($button-color, 10%);
+  }
+}
+.result, .battle-log {
+    background: white;
+    padding: $padding;
+    border-radius: $border-radius;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    width: 90%;
+    max-width: 600px;
+  }
+  
+  ul {
+    list-style-type: none;
+    padding: 0;
+  
+    li {
+      padding: 5px;
+      border-bottom: 1px solid $background-color;
+    }
+  }
+  
