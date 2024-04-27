@@ -6,6 +6,8 @@ import {AngularFireAuth} from '@angular/fire/compat/auth';
 })
 export class AuthService {
 
+  private userEmail: string | null = null;
+
   constructor(private auth: AngularFireAuth) { }
 
   login(email:string, password:string){
@@ -16,5 +18,11 @@ export class AuthService {
   }
   signOut() {
     return this.auth.signOut();
+  }
+  setUserEmail(email: string | null): void {
+    this.userEmail = email;
+  }
+  getUserEmail(): string | null {
+    return this.userEmail;
   }
 }

@@ -12,31 +12,43 @@ export class LoginComponent {
   email = new FormControl('');
   password = new FormControl('');
   errorMessage: string = ''; // Store error messages
+  userLoggedInEmail: string | null = null;  // Variable to store the email
+
 
   constructor(private router: Router, private authService: AuthService) { }
 
+
+  
   ngOnInit(): void {
+    this.userLoggedInEmail = this.authService.getUserEmail();  // Get email from the service
+
   }
 
   login() {
     if (this.email.value && this.password.value) {
       this.authService.login(this.email.value, this.password.value).then(cred => {
-        console.log(cred);
+        this.authService.setUserEmail(this.email.value);
+        this.userLoggedInEmail = this.email.value;  // Update the email variable
         this.router.navigateByUrl('/main');
       }).catch(error => {
-        this.errorMessage = 'Authentication failed: ' + error.message; // Set error message
+        this.errorMessage = 'Authentication failed: ' + error.message;
         console.error(error);
       });
     } else {
-      this.errorMessage = 'Please enter both email and password.'; // Validation message
+      this.errorMessage = 'Please enter both email and password.';
     }
   }
+  
+  
 
   signOut() {
     this.authService.signOut().then(() => {
+      this.authService.setUserEmail(null);  // Clear email in the service
+      this.userLoggedInEmail = null;  // Clear the email variable
       this.router.navigateByUrl('/login');
     }).catch(error => {
       console.error('Failed to sign out:', error);
     });
   }
 }
+
