@@ -29,7 +29,7 @@ export class LoginComponent {
       this.authService.login(this.email.value, this.password.value).then(cred => {
         this.authService.setUserEmail(this.email.value);
         this.userLoggedInEmail = this.email.value;  // Update the email variable
-        this.router.navigateByUrl('/main');
+        this.router.navigateByUrl('/login');
       }).catch(error => {
         this.errorMessage = 'Authentication failed: ' + error.message;
         console.error(error);

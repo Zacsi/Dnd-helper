@@ -25,7 +25,7 @@ interface MapCell {
 })
 export class LiveComponent implements OnInit {
   mapId = 'map_001';
-  mapSize = 20;
+  mapSize = 15;
   map: MapCell[][] = [];
   characters: Character[] = [
     { id: 1, name: 'Hero', type: 'hero', position: { x: 0, y: 0 } }

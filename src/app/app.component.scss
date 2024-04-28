@@ -6,6 +6,26 @@
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
   }
+  .side-image {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    z-index: 999; /* Adjust as needed */
+  }
+  
+  .left-image {
+    left: -20px;
+  }
+  
+  .right-image {
+    right: -20px;
+  }
+
+  @media (max-width: 1200px) { /* Adjust the max-width as needed */
+  .side-image {
+    display: none; /* Hide images on smaller screens */
+  }
+}
 
   h1,
   h2,

@@ -19,6 +19,7 @@ body {
   h2 {
     color: darken($primary-color, 20%);
   }
+
   
   h3, h4 {
     color: $secondary-color;
@@ -30,6 +31,34 @@ body {
     margin-bottom: 5px;
     color: darken($primary-color, 10%);
   }
+
+  .flex-container {
+    display: flex;
+    align-items: center; /* This will vertically align all children in the middle */
+    justify-content: space-between; /* This spreads out the children to use available space */
+  }
+  
+  .side-image {
+    /* Adjust sizing as necessary */
+    flex: 0 0 auto; /* Do not grow or shrink */
+  }
+  .left-image {
+    position: absolute;
+    left: 10px; /* Moves it 10px left from the left boundary of its container */
+  }
+  
+  .right-image {
+    position: absolute;
+    right: 10px; /* Moves it 500px right from the right boundary of its container */
+  }
+  
+  /* Add a media query for small screens */
+  @media (max-width: 1150px) { /* Adjust the max-width as needed */
+    .side-image {
+      display: none; /* Hide images on smaller screens */
+    }
+  }
+  
 
   select {
     width: 100%;

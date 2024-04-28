@@ -180,9 +180,10 @@ input[type="text"] {
   }
   
   .character {
-    background-color: #f0f0f0; /* Light background for contrast, adjust as needed */
-    border: 1px solid #000; /* Optional, adds definition */
-    box-shadow: 0 0 5px #000; /* Optional, adds visibility through shadow */
+    background-image: url('../../../assets/hero.png');
+    background-size: cover; /* Cover ensures the background image fully covers the box */
+    background-position: center; /* Centers the background image within the element */
+    background-repeat: no-repeat; /* Prevents the image from repeating */
     cursor: grab;
     position: relative;
     width: calc(100% - 10px);
@@ -196,6 +197,7 @@ input[type="text"] {
     text-overflow: ellipsis;
     white-space: nowrap;
   }
+  
   button {
     width: 100%;
     padding: $padding;
