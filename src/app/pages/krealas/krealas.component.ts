@@ -17,6 +17,8 @@ export interface CharacterItem {
   attackModifier: number;
   defenseModifier: number;
   hpModifier: number;
+  picture: string;  // URL to the image of the item
+
 }
 
 @Component({
@@ -63,7 +65,8 @@ addItem(): void {
     name: '',
     attackModifier: 0,
     defenseModifier: 0,
-    hpModifier: 0
+    hpModifier: 0,
+    picture: ''
   }));
 }
 

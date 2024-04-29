@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { FormGroup, FormControl } from '@angular/forms';
+import { FormArray, FormBuilder, FormControl, FormGroup } from '@angular/forms';
 import { AngularFirestore } from '@angular/fire/compat/firestore';
 import { Character } from '../krealas/krealas.component'; // Adjust path as necessary
 import { Enemy } from '../ellenseg-krealas/ellenseg-krealas.component'; // Adjust path as necessary
@@ -17,17 +17,20 @@ export class MyheroComponent implements OnInit {
   selectedEnemy: Enemy | null = null;
   characterIds: Map<string, string> = new Map();
   enemyIds: Map<string, string> = new Map();
-  editForm = new FormGroup({
-    name: new FormControl(''),
-    race: new FormControl(''),
-    class: new FormControl(''),
-    hp: new FormControl(0),
-    attack: new FormControl(0),
-    defense: new FormControl(0),
-    story: new FormControl('')
-  });
+  editForm: FormGroup;
 
-  constructor(private afs: AngularFirestore) { }
+  constructor(private afs: AngularFirestore, private fb: FormBuilder) {
+    this.editForm = this.fb.group({
+      name: new FormControl(''),
+      race: new FormControl(''),
+      class: new FormControl(''),
+      hp: new FormControl(0),
+      attack: new FormControl(0),
+      defense: new FormControl(0),
+      story: new FormControl(''),
+      items: this.fb.array([])  // Initialize as an empty FormArray
+    });
+  }
 
   ngOnInit() {
     this.fetchCharacters();
@@ -62,6 +65,18 @@ export class MyheroComponent implements OnInit {
   selectEnemy(enemy: Enemy) {
     this.selectedEnemy = enemy;
     this.editForm.patchValue(enemy);
+  }
+  get items(): FormArray {
+    return this.editForm.get('items') as FormArray;
+  }
+  
+  addItem(itemName: string): void {
+    const itemControl = new FormControl(itemName);
+    this.items.push(itemControl);
+  }
+  
+  removeItem(index: number): void {
+    this.items.removeAt(index);
   }
 
   onSave() {

@@ -10,16 +10,20 @@
       <th>Attack</th>
       <th>Defense</th>
       <th>Story</th>
+      <th>Items</th>
     </tr>
     <tr *ngFor="let character of characters | async">
-        <td>{{character.name}}</td>
-      <td>{{character.race}}</td>
-      <td>{{character.class}}</td>
-      <td>{{character.hp}}</td>
-      <td>{{character.attack}}</td>
-      <td>{{character.defense}}</td>
-      <td>{{character.story}}</td>
-    </tr>
+      <td>{{ character.name }}</td>
+      <td>{{ character.race }}</td>
+      <td>{{ character.class }}</td>
+      <td>{{ character.hp }}</td>
+      <td>{{ character.attack }}</td>
+      <td>{{ character.defense }}</td>
+      <td>{{ character.story }}</td>
+      <td>
+        <li *ngFor="let item of character.items">{{ item.name }}</li>
+      </td>
+  </tr>
   </table>
 </div>
 </body>

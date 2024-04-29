@@ -10,6 +10,7 @@
       {{ character.name }}
     </li>
   </ul>
+  
 </div>
 
 <div *ngIf="mode === 'enemies'">
@@ -30,9 +31,9 @@
     <input type="number" formControlName="hp" placeholder="HP">
     <input type="number" formControlName="attack" placeholder="Attack">
     <input type="number" formControlName="defense" placeholder="Defense">
+    <input type="text" formControlName="items" placeholder="Items">
     <textarea formControlName="story" placeholder="Story"></textarea>
     <button (click)="onSave()">Save Changes</button>
     <button type="button" (click)="onDelete()" class="delete-btn">Delete Enemy</button>
   </form>
 </div>
-

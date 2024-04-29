@@ -53,7 +53,8 @@ export class TargyakComponent implements OnInit {
       name: item.name,
       attackModifier: item.attackmodifier,
       defenseModifier: item.defensemodifier,
-      hpModifier: item.hpmodifier
+      hpModifier: item.hpmodifier,
+      picture: item.picture
     };
   
     // Adding the new item to the character's items array
