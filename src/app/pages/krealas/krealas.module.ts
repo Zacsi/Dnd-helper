@@ -8,7 +8,6 @@ import { FormsModule } from '@angular/forms';
 @NgModule({
   declarations: [
     KrealasComponent,
-    
   
   ],
   imports: [
@@ -16,6 +15,9 @@ import { FormsModule } from '@angular/forms';
     KrealasRoutingModule,
     FormsModule,
     ReactiveFormsModule
+  ],
+  exports: [
+    KrealasComponent 
   ]
 })
 export class KrealasModule { }

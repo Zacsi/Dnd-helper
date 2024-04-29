@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { FormControl,FormGroup } from '@angular/forms';
+import { FormArray, FormBuilder, FormControl, FormGroup } from '@angular/forms';
 import { AngularFirestore } from '@angular/fire/compat/firestore';
 
 export interface Character {
@@ -10,6 +10,13 @@ export interface Character {
   attack: number;
   defense: number;
   story: string;
+  items: CharacterItem[];
+}
+export interface CharacterItem {
+  name: string;
+  attackModifier: number;
+  defenseModifier: number;
+  hpModifier: number;
 }
 
 @Component({
@@ -18,36 +25,50 @@ export interface Character {
   styleUrls: ['./krealas.component.scss']
 })
 export class KrealasComponent implements OnInit {
+  characters: Character[] = [];
+  createfrom: FormGroup;
 
-  createfrom = new FormGroup({
+ // In your constructor:
+ constructor(private afs: AngularFirestore, private fb: FormBuilder) {
+  this.createfrom = this.fb.group({
     name: new FormControl(''),
     race: new FormControl(''),
     class: new FormControl(''),
     hp: new FormControl(0),
     attack: new FormControl(0),
     defense: new FormControl(0),
-    story: new FormControl('')
+    story: new FormControl(''),
+    items: this.fb.array([])  // Initialize as an empty FormArray
   });
+}
 
-  constructor(private afs: AngularFirestore) { }
+ngOnInit(): void {
+  this.fetchCharacters();
+}
 
-  ngOnInit(): void {
-    this.fetchCharacters();
-  }
-  
-  fetchCharacters() {
-    this.afs.collection<Character>('characters').valueChanges().subscribe(characters => {
-      this.characters = characters;
-    }, error => {
-      console.error('Error fetching characters: ', error);
-    });
-  }
+fetchCharacters() {
+  this.afs.collection<Character>('characters').valueChanges().subscribe(characters => {
+    this.characters = characters;
+  }, error => {
+    console.error('Error fetching characters: ', error);
+  });
+}
 
+get items(): FormArray {
+  return this.createfrom.get('items') as FormArray;
+}
 
-characters: Character[] = [];
+addItem(): void {
+  this.items.push(this.fb.group({
+    name: '',
+    attackModifier: 0,
+    defenseModifier: 0,
+    hpModifier: 0
+  }));
+}
 
 onSubmit() {
-  const character = this.createfrom.value;
+  const character: Character = this.createfrom.value as Character;
   this.afs.collection('characters').add(character)
     .then(() => {
       console.log('Character added successfully');

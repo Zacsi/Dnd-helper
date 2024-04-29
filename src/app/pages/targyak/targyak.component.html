@@ -1,5 +1,4 @@
 <body>
-
     <div>
 <table>
     <tr>
@@ -21,6 +20,12 @@
       <td>{{item.minimumlevel}}</td>
       <td>{{item.story}}</td>
       <td><img *ngIf="item.picture" [src]="item.picture" alt="Item image" style="width:100px; height:auto;"></td>
+      <td>
+        <select [(ngModel)]="selectedCharacter">
+          <option *ngFor="let character of characters" [ngValue]="character">{{ character.name }}</option>
+        </select>
+        <button (click)="buyItem(item)">Buy {{item.name}}</button>
+      </td>
     </tr>
   </table>
 </div>
