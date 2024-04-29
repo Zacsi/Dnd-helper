@@ -34,7 +34,7 @@ export class MyheroComponent implements OnInit {
 
   ngOnInit() {
     this.fetchCharacters();
-    this.fetchEnemies();
+    this.fetchEnemies(); 
   }
 
   fetchCharacters() {
@@ -61,6 +61,7 @@ export class MyheroComponent implements OnInit {
   selectCharacter(character: Character) {
     this.selectedCharacter = character;
     this.editForm.patchValue(character);
+    
   }
   selectEnemy(enemy: Enemy) {
     this.selectedEnemy = enemy;
@@ -70,14 +71,19 @@ export class MyheroComponent implements OnInit {
     return this.editForm.get('items') as FormArray;
   }
   
-  addItem(itemName: string): void {
-    const itemControl = new FormControl(itemName);
-    this.items.push(itemControl);
+
+  
+  removeItem(character: Character, itemName: string) {
+    // Assuming 'items' is an array of objects and each object has a 'name' property
+    const index = character.items.findIndex(item => item.name === itemName);
+    if (index > -1) {
+      character.items.splice(index, 1);
+      // Update Firestore if necessary
+      // You may need to save the updated character back to Firestore
+      this.afs.collection('characters').doc(character.name).update({ items: character.items });
+    }
   }
   
-  removeItem(index: number): void {
-    this.items.removeAt(index);
-  }
 
   onSave() {
     if (this.mode === 'heroes') {

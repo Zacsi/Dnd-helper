@@ -8,9 +8,17 @@
   <ul>
     <li *ngFor="let character of characters" (click)="selectCharacter(character)">
       {{ character.name }}
+     <ul>
+      <li>Felszerelés:
+      <ul>
+        <li *ngFor="let item of character.items">
+          - {{ item.name }}
+          <button (click)="removeItem(character, item.name);$event.stopPropagation();">X</button>
+        </li>
+      </ul>
+    </ul>
     </li>
   </ul>
-  
 </div>
 
 <div *ngIf="mode === 'enemies'">
@@ -31,9 +39,9 @@
     <input type="number" formControlName="hp" placeholder="HP">
     <input type="number" formControlName="attack" placeholder="Attack">
     <input type="number" formControlName="defense" placeholder="Defense">
-    <input type="text" formControlName="items" placeholder="Items">
     <textarea formControlName="story" placeholder="Story"></textarea>
     <button (click)="onSave()">Save Changes</button>
-    <button type="button" (click)="onDelete()" class="delete-btn">Delete Enemy</button>
+    <button type="button" (click)="onDelete()" class="delete-btn">Delete {{ mode === 'heroes' ? 'Hero' : 'Enemy' }}</button>
   </form>
 </div>
+
