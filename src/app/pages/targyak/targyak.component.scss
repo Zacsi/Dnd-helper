@@ -1,39 +1,143 @@
+// Base colors and themes inspired by classic board games
+$background-color: #fdf1dc;  // A warm paper-like color
+$accent-color: #c0392b;      // Deep red for accents
+$header-color: #7f8c8d;      // A neutral dark gray for text headers
+$button-color: #834c19;      // Green color for buttons, reminiscent of classic game board colors
+
+// Base colors and themes previously defined
 body {
-    background-color: #462f1a;
-    color: #ffffff;
-    font-family: Arial, sans-serif;
-    text-align: center;
-  }
-  
-  #items-form {
-    margin-top: 100px;
-  }
-  
-  #items-form input, textarea, button {
-    display: block;
-    margin: 0 auto;
-    margin-bottom: 20px;
-  }
-  
-  #items-form input[type="file"] {
-    color: transparent;
-  }
-  
-  #items-form .radio-group {
-  display: flex;
-  justify-content: center;
-  gap: 10px;
-  }
-  
-  @media (min-width: 600px) {
-    #items-form {
-      width: 100%;
-      max-width: 600px;
-      margin: 0 auto;
+  background-color: $background-color;
+  font-family: 'Garamond', serif;
+  overflow-x: auto;
+}
+
+.board-game-table {
+  overflow-x: auto; // Enables horizontal scrolling for the table container
+
+  table {
+    width: 100%;
+    border-collapse: collapse;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    th, td {
+      padding: 15px;
+      text-align: left;
+      border-bottom: 1px solid $header-color;
     }
-  
+  }
+
+  th {
+    color: $header-color;
+    font-size: 18px;
+  }
+
+  td {
+    background-color: rgba(255, 255, 255, 0.9);
+    color: #333;
+    vertical-align: top;
+  }
+
+  .description {
+    max-width: 300px;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+  }
+
+  .image-container {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 10px;
+  }
+
+  img {
+    width: 150px;
+    height: auto;
+  }
+
+  button {
+    background-color: $button-color;
+    border: none;
+    color: white;
+    padding: 10px 20px;
+    text-transform: uppercase;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s;
+
+    &:hover {
+      background-color: darken($button-color, 10%);
+    }
+  }
+}
+
+// Responsive design adjustments
+@media (max-width: 1024px) {
+  .board-game-table {
     table, th, td {
-      border: 1px solid white;
-      
+      font-size: 16px;
+    }
+
+    .description {
+      max-width: 200px;
+    }
+
+    img {
+      width: 120px;
+    }
+
+    button {
+      padding: 8px 16px;
     }
   }
+}
+
+@media (max-width: 768px) {
+  .board-game-table {
+    table, th, td {
+      font-size: 14px;
+      padding: 10px;
+    }
+
+    .description {
+      max-width: 150px;
+    }
+
+    img {
+      width: 100px;
+    }
+
+    button {
+      padding: 5px 10px;
+      font-size: 12px;
+    }
+  }
+}
+
+@media (max-width: 480px) {
+  .board-game-table {
+    table, th, td {
+      font-size: 12px;
+      padding: 8px;
+    }
+
+    .description {
+      max-width: 100px;
+    }
+
+    .image-container {
+      flex-direction: column;
+    }
+
+    img {
+      width: 80px;
+      margin: 0 auto; // Centers the image
+    }
+
+    button {
+      width: 100%;
+      padding: 4px 8px;
+      font-size: 10px;
+    }
+  }
+}

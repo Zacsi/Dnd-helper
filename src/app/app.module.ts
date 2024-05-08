@@ -14,6 +14,7 @@ import { provideFirestore,getFirestore } from '@angular/fire/firestore';
 import { provideStorage,getStorage } from '@angular/fire/storage';
 import { AngularFireModule } from '@angular/fire/compat';
 import { FormsModule } from '@angular/forms';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 //import { MyheroComponent } from './pages/myhero/myhero.component';
 //import { LiveComponent } from './pages/live/live.component';
 //import { TargyakComponent } from './pages/targyak/targyak.component';
@@ -43,7 +44,8 @@ import { FormsModule } from '@angular/forms';
     provideAuth(() => getAuth()),
     provideFirestore(() => getFirestore()),
     provideStorage(() => getStorage()),
-    AngularFireStorageModule  // This should be included
+    AngularFireStorageModule,
+    BrowserAnimationsModule  // This should be included
 
   ],
   providers: [],
