@@ -8,19 +8,23 @@
 
   <div>
     <h2>Fight</h2>
-    <label for="first-character">Select Hero:</label>
-    <select [(ngModel)]="selectedFirst" id="first-character">
-      <option *ngFor="let character of characters | async" [ngValue]="character">
-        {{ character.name }}
-      </option>
-    </select>
-    <label for="second-character">Select Enemy:</label>
-    <select [(ngModel)]="selectedSecond" id="second-character">
-      <option *ngFor="let enemy of enemies | async" [ngValue]="enemy">
-        {{ enemy.name }}
-      </option>
-    </select>
-    <button (click)="simulateBattle()">Fight!</button>
+    <mat-form-field appearance="fill">
+      <mat-label>Select Hero:</mat-label>
+      <mat-select [(ngModel)]="selectedFirst" id="first-character">
+        <mat-option *ngFor="let character of characters | async" [value]="character">
+          {{ character.name }}
+        </mat-option>
+      </mat-select>
+    </mat-form-field>
+    <mat-form-field appearance="fill">
+      <mat-label>Select Enemy:</mat-label>
+      <mat-select [(ngModel)]="selectedSecond" id="second-character">
+        <mat-option *ngFor="let enemy of enemies | async" [value]="enemy">
+          {{ enemy.name }}
+        </mat-option>
+      </mat-select>
+    </mat-form-field>
+    <button mat-raised-button color="primary" (click)="simulateBattle()">Fight!</button>
   </div>
 
   <div>
@@ -34,6 +38,4 @@
       </ul>
     </div>
   </div>
-
-
 </div>

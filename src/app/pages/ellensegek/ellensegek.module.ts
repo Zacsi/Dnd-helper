@@ -8,11 +8,12 @@ import { MatTableModule } from '@angular/material/table';
 import { MatButtonModule } from '@angular/material/button';
 import { MatIconModule } from '@angular/material/icon';
 import { MatSortModule } from '@angular/material/sort';
-import { TruncatePipe } from '../../shared/services/truncate.pipe';
+import { SharedModule } from '../../shared/services/shared.module';
+
 
 @NgModule({
   declarations: [
-    EllensegekComponent,TruncatePipe
+    EllensegekComponent
   ],
   imports: [
     CommonModule,
@@ -21,6 +22,7 @@ import { TruncatePipe } from '../../shared/services/truncate.pipe';
     MatButtonModule,
     MatIconModule,
     MatSortModule,
+    SharedModule
   ]
 })
 export class EllensegekModule { }

@@ -4,7 +4,7 @@ div {
   margin: 10px;
   background-color: #f9f9f9;
   border-radius: 8px;
-  box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
 
   h2 {
     color: #333;
@@ -36,23 +36,28 @@ div {
     flex-direction: column;
     gap: 10px;
 
-    input[type="text"],
-    input[type="number"],
-    textarea {
-      padding: 8px;
-      font-size: 16px;
-      border: 1px solid #ccc;
-      border-radius: 4px;
+    mat-form-field {
+      width: 100%;
+      margin: 0; // Remove margin to maintain consistency
 
-      &:focus {
-        border-color: #0056b3;
-        outline: none;
+      input[type="text"],
+      input[type="number"],
+      textarea {
+        padding: 8px;
+        font-size: 16px;
+        border: 1px solid #ccc;
+        border-radius: 4px;
+
+        &:focus {
+          border-color: #0056b3;
+          outline: none;
+        }
       }
-    }
 
-    textarea {
-      resize: vertical;
-      height: 100px;
+      textarea {
+        resize: vertical;
+        height: 100px;
+      }
     }
 
     button {
@@ -64,6 +69,8 @@ div {
       border-radius: 4px;
       cursor: pointer;
       transition: background-color 0.3s;
+    }
+
     .delete-btn {
       padding: 10px 20px;
       font-size: 16px;
@@ -73,14 +80,14 @@ div {
       border-radius: 4px;
       cursor: pointer;
       transition: background-color 0.3s;
-    
+
       &:hover {
         background-color: #c82333;
       }
     }
-      &:hover {
-        background-color: #613b17;
-      }
+
+    button:hover {
+      background-color: #613b17;
     }
   }
 }
