@@ -1,8 +1,21 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, ViewChild } from '@angular/core';
 import { AngularFirestore } from '@angular/fire/compat/firestore';
 import { Observable, EMPTY } from 'rxjs';
 import { Character, CharacterItem } from '../krealas/krealas.component';
+import { BehaviorSubject } from 'rxjs';
+import { MatTableDataSource } from '@angular/material/table';
+import { MatSort } from '@angular/material/sort';
 
+interface Item {
+  name: string;
+  attackmodifier: number;
+  defensemodifier: number;
+  hpmodifier: number;
+  price: number;
+  minimumlevel: number;
+  picture?: string;
+  story: string;
+}
 
 @Component({
   selector: 'app-targyak',
@@ -10,7 +23,11 @@ import { Character, CharacterItem } from '../krealas/krealas.component';
   styleUrls: ['./targyak.component.scss']
 })
 export class TargyakComponent implements OnInit {
-  items: Observable<any[]> = EMPTY;
+  displayedColumns: string[] = ['name', 'attackmodifier', 'defensemodifier', 'hpmodifier', 'price', 'minimumlevel', 'picture', 'story', 'action'];
+  private itemsSubject = new BehaviorSubject<Item[]>([]);
+  dataSource = new MatTableDataSource<Item>([]);
+  @ViewChild(MatSort, { static: true }) sort!: MatSort;
+
   characters: Character[] = [];  // Array to hold character data
   selectedCharacter: Character | null = null;
   characterIds: Map<string, string> = new Map();  // Map to hold character names to Firestore document IDs
@@ -19,7 +36,16 @@ export class TargyakComponent implements OnInit {
   constructor(private afs: AngularFirestore) {}
 
   ngOnInit() {
-    this.items = this.afs.collection('items').valueChanges();
+    this.afs.collection<Item>('items').valueChanges().subscribe(
+      items => {
+        this.dataSource.data = items; // Directly update the MatTableDataSource
+        this.dataSource.sort = this.sort;
+      },
+      error => {
+        console.error('Error fetching items:', error);
+      }
+
+    );
     this.fetchCharacters();
   }
 

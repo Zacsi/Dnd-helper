@@ -1,3 +1,4 @@
+// Define your custom styles
 $font-stack: 'Arial', sans-serif;
 $primary-color: #887520;
 $background-color: #fff;
@@ -7,6 +8,7 @@ $error-color: #ff0000;
 $padding: 8px;
 $margin: 10px;
 $border-radius: 5px;
+
 body {
   font-family: $font-stack;
   color: $text-color;
@@ -22,6 +24,7 @@ h2 {
   color: darken($primary-color, 20%);
   margin: $margin 0;
 }
+
 #character-form {
   background: white;
   padding: 20px;
@@ -29,9 +32,20 @@ h2 {
   box-shadow: 0 4px 8px rgba(0,0,0,0.1);
   text-align: center;
   width: 300px;
+  display: flex;            // Add flex display
+  flex-direction: column;  // Set flex direction to column
+  align-items: center;      // Center items horizontally
+  justify-content: center;  // Center items vertically
+  mat-card {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
 
-  img {
-    margin-bottom: $margin;
+    .image-wrapper {
+      margin-bottom: $margin;
+    }
   }
 
   select {
@@ -62,6 +76,7 @@ button {
     background-color: darken($button-color, 10%);
   }
 }
+
 @media (max-width: 600px) {
   #character-form {
     width: 90%;

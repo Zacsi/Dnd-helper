@@ -1,6 +1,6 @@
 <div>
-  <button (click)="switchMode('heroes')">Manage Heroes</button>
-  <button (click)="switchMode('enemies')">Manage Enemies</button>
+  <button mat-button (click)="switchMode('heroes')">Manage Heroes</button>
+  <button mat-button (click)="switchMode('enemies')">Manage Enemies</button>
 </div>
 
 <div *ngIf="mode === 'heroes'">
@@ -33,15 +33,36 @@
 <div *ngIf="selectedCharacter || selectedEnemy">
   <h2>Edit {{ mode === 'heroes' ? 'Hero' : 'Enemy' }}</h2>
   <form [formGroup]="editForm">
-    <input type="text" formControlName="name" placeholder="Name">
-    <input type="text" formControlName="race" placeholder="Race">
-    <input type="text" formControlName="class" placeholder="Class">
-    <input type="number" formControlName="hp" placeholder="HP">
-    <input type="number" formControlName="attack" placeholder="Attack">
-    <input type="number" formControlName="defense" placeholder="Defense">
-    <textarea formControlName="story" placeholder="Story"></textarea>
-    <button (click)="onSave()">Save Changes</button>
-    <button type="button" (click)="onDelete()" class="delete-btn">Delete {{ mode === 'heroes' ? 'Hero' : 'Enemy' }}</button>
+    <mat-form-field appearance="fill">
+      <mat-label>Name</mat-label>
+      <input matInput formControlName="name" placeholder="Name">
+    </mat-form-field>
+    <mat-form-field appearance="fill">
+      <mat-label>Race</mat-label>
+      <input matInput formControlName="race" placeholder="Race">
+    </mat-form-field>
+    <mat-form-field appearance="fill">
+      <mat-label>Class</mat-label>
+      <input matInput formControlName="class" placeholder="Class">
+    </mat-form-field>
+    <mat-form-field appearance="fill">
+      <mat-label>HP</mat-label>
+      <input matInput formControlName="hp" type="number" placeholder="HP">
+    </mat-form-field>
+    <mat-form-field appearance="fill">
+      <mat-label>Attack</mat-label>
+      <input matInput formControlName="attack" type="number" placeholder="Attack">
+    </mat-form-field>
+    <mat-form-field appearance="fill">
+      <mat-label>Defense</mat-label>
+      <input matInput formControlName="defense" type="number" placeholder="Defense">
+    </mat-form-field>
+    <mat-form-field appearance="fill">
+      <mat-label>Story</mat-label>
+      <textarea matInput formControlName="story" placeholder="Story"></textarea>
+    </mat-form-field>
+    <button mat-button (click)="onSave()">Save Changes</button>
+    <button mat-button type="button" (click)="onDelete()" class="delete-btn">Delete {{ mode === 'heroes' ? 'Hero' : 'Enemy' }}</button>
   </form>
 </div>
 

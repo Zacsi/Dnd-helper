@@ -1,4 +1,3 @@
-<!-- Assuming this is part of your main component HTML file -->
 <div class="content-wrapper">
   <!-- Chat Component Section -->
   <div class="chat-section">
@@ -8,8 +7,9 @@
       </div>
       <div class="chat-inputs">
         <input [(ngModel)]="newMessage" type="text" placeholder="Type a message...">
-        <button (click)="sendMessage()">Send</button>
-        <button (click)="clearChatHistory()">Clear</button>
+        <button mat-raised-button color="primary" (click)="sendMessage()">Send</button>
+        <button mat-raised-button color="warn" (click)="clearChatHistory()">Clear</button>
+
       </div>
     </div>
   </div>
@@ -18,10 +18,10 @@
   <div class="map-section">
     <div>
       <input [(ngModel)]="newCharacterName" placeholder="Enter character name" type="text">
-      <button (click)="addHero()">Add Hero</button>
-      <button (click)="addEnemy()">Add Enemy</button>
-      <button (click)="fileInput.click()">Select New Map</button>
-      <button (click)="saveMap()">Save Map</button>
+      <button mat-raised-button  (click)="addHero()">Add Hero</button>
+      <button mat-raised-button  (click)="addEnemy()">Add Enemy</button>
+      <button mat-raised-button  (click)="fileInput.click()">Select New Map</button>
+      <button mat-raised-button  (click)="saveMap()">Save Map</button>
       <input type="file" #fileInput style="display: none" (change)="onFileSelected($event)">
     </div>
     <div class="map-container">
