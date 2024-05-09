@@ -19,7 +19,7 @@
 <div class="content" role="main">
 
   <div class="card-container" *ngIf="showDiv">
-    <h1>Funkciók</h1>
+    <h1>Functions</h1>
   </div>
 
   <div class="card-container" *ngIf="showDiv">
@@ -33,39 +33,39 @@
 
     <a class="card" routerLink="/harc">
       <img src="assets/sword.png" class="material-icons" width="24" height="24" alt="Icon 1">
-      <span>Harc Szimuláció</span>
+      <span>Fight simulation</span>
       <img src="assets/sword.png" class="material-icons" width="24" height="24" alt="Icon 2">
     </a>
     <a class="card" routerLink="/login">
       <img src="assets/sword.png" class="material-icons" width="24" height="24" alt="Icon 1">
-      <span>Bejelentkezés</span>
+      <span>Log in</span>
       <img src="assets/sword.png" class="material-icons" width="24" height="24" alt="Icon 2">
     </a>
     <a class="card" routerLink="/signup">
       <img src="assets/sword.png" class="material-icons" width="24" height="24" alt="Icon 1">
-      <span>Regisztráció</span>
+      <span>Regitration</span>
       <img src="assets/sword.png" class="material-icons" width="24" height="24" alt="Icon 2">
     </a>
     <a class="card" routerLink="/krealas">
       <img src="assets/sword.png" class="material-icons" width="24" height="24" alt="Icon 1">
-      <span>Hős hozzáadása</span>
+      <span>Add hero</span>
       <img src="assets/sword.png" class="material-icons" width="24" height="24" alt="Icon 2">
     </a>
     <a class="card" routerLink="/targy">
       <img src="assets/sword.png" class="material-icons" width="24" height="24" alt="Icon 1">
-        <span>Tárgy hozzáadása</span>
+        <span>Add item</span>
       <img src="assets/sword.png" class="material-icons" width="24" height="24" alt="Icon 1">
     </a>
 
     <a class="card" routerLink="/ellenseg-krealas">
       <img src="assets/sword.png" class="material-icons" width="24" height="24" alt="Icon 1">
-      <span>Ellenség hozzáadása</span>
+      <span>Add enemy</span>
       <img src="assets/sword.png" class="material-icons" width="24" height="24" alt="Icon 2">
     </a>
 
     <a class="card" routerLink="/live" >
       <img src="assets/sword.png" class="material-icons" width="24" height="24" alt="Icon 1">
-      <span>Kaland mód</span>
+      <span>Live mode</span>
       <img src="assets/sword.png" class="material-icons" width="24" height="24" alt="Icon 2">
     </a>
 
@@ -78,32 +78,32 @@
   <div class="card-container" *ngIf="showDiv">
     <button class="card card-small" routerLink="/dobokocka" (click)="selection.value = 'component'" tabindex="0">
       <svg class="material-icons" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"><path d="M19 13h-6v6h-2v-6H5v-2h6V5h2v6h6v2z"/></svg>
-      <span>Dobókocka</span>
+      <span>Dice roll</span>
     </button>
 
     <button class="card card-small" routerLink="/myhero" (click)="selection.value = 'component'" tabindex="0">
       <svg class="material-icons" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"><path d="M19 13h-6v6h-2v-6H5v-2h6V5h2v6h6v2z"/></svg>
-      <span>Karakterlap</span>
+      <span>My hero edit</span>
     </button>
 
     <button class="card card-small" routerLink="/karakterek" (click)="selection.value = 'pwa'" tabindex="0">
       <svg class="material-icons" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"><path d="M19 13h-6v6h-2v-6H5v-2h6V5h2v6h6v2z"/></svg>
-      <span>Hősök</span>
+      <span>Heroes</span>
     </button>
 
     <button class="card card-small" routerLink="/ellensegek" (click)="selection.value = 'dependency'" tabindex="0">
       <svg class="material-icons" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"><path d="M19 13h-6v6h-2v-6H5v-2h6V5h2v6h6v2z"/></svg>
-      <span>Ellenségek</span>
+      <span>Enemies</span>
     </button>
 
     <button class="card card-small" routerLink="/targyak" (click)="selection.value = 'dependency'" tabindex="0">
       <svg class="material-icons" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"><path d="M19 13h-6v6h-2v-6H5v-2h6V5h2v6h6v2z"/></svg>
-      <span>Bolt</span>
+      <span>Shop</span>
     </button>
 
     <button class="card card-small" (click)="selection.value = 'build'" tabindex="0">
       <svg class="material-icons" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"><path d="M19 13h-6v6h-2v-6H5v-2h6V5h2v6h6v2z"/></svg>
-      <span>valami</span>
+      <span>N/A</span>
     </button>
   </div>
 

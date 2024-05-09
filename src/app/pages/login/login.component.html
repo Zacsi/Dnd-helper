@@ -1,10 +1,10 @@
 <div>
-  <p>You are logged in as: {{ userLoggedInEmail }}</p>
+  <p>You are logged in as: <span style="color: rgb(61, 224, 61);">{{ userLoggedInEmail }}</span></p>
 </div>
 <body>
   
 <div id="character-form">
-    <h2>Jelentkezz be a már meglévő fiókodba!</h2>
+    <h2>Login to your account!</h2>
 
     <span><label for="email">Email: </label><input type="text" [formControl]="email"/></span>
     <span><label for="password">Password: </label><input type="password" [formControl]="password"/></span>

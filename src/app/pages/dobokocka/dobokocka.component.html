@@ -1,6 +1,6 @@
 <body>
     <div id="character-form">
-        <h2>Dobás a kiválasztott kockával</h2>
+        <h2>Throw with your selected dice</h2>
         <img src="assets/dice2.png" height="100px" alt="D20 Dice">
         <br>        
         <select [(ngModel)]="selectedDice" (change)="updateMaxValue(selectedDice)">
@@ -10,7 +10,7 @@
             <option value="20" selected>D20</option>
         </select>        
         <br>
-        <button (click)="generateRandomNumber()">Dobás!</button>
+        <button (click)="generateRandomNumber()">Throw!</button>
         <h2>{{randomNumber}}</h2>
     </div>
 </body>
