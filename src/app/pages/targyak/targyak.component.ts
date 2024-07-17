@@ -1,4 +1,4 @@
-import { Component, OnInit, ViewChild } from '@angular/core';
+import { Component, OnInit, ViewChild, ChangeDetectorRef  } from '@angular/core';
 import { AngularFirestore } from '@angular/fire/compat/firestore';
 import { Observable, EMPTY } from 'rxjs';
 import { Character, CharacterItem } from '../krealas/krealas.component';
@@ -15,6 +15,7 @@ interface Item {
   minimumlevel: number;
   picture?: string;
   story: string;
+  isFlipped?: boolean;  // Add isFlipped property
 }
 
 @Component({
@@ -32,14 +33,18 @@ export class TargyakComponent implements OnInit {
   selectedCharacter: Character | null = null;
   characterIds: Map<string, string> = new Map();  // Map to hold character names to Firestore document IDs
 
+  isTableView = true;  // Property to track current view
 
-  constructor(private afs: AngularFirestore) {}
+  constructor(private afs: AngularFirestore, private cdr: ChangeDetectorRef) {}
 
   ngOnInit() {
     this.afs.collection<Item>('items').valueChanges().subscribe(
       items => {
+        items.forEach(item => item.isFlipped = false);
         this.dataSource.data = items; // Directly update the MatTableDataSource
         this.dataSource.sort = this.sort;
+        this.cdr.detectChanges(); // Trigger change detection
+
       },
       error => {
         console.error('Error fetching items:', error);
@@ -61,6 +66,15 @@ export class TargyakComponent implements OnInit {
   }
   selectCharacter(character: Character) {
     this.selectedCharacter = character;
+  }
+
+  toggleFlip(item: Item) {
+    item.isFlipped = !item.isFlipped;
+  }
+  toggleView() {
+    this.isTableView = !this.isTableView;
+    this.cdr.detectChanges(); // Trigger change detection after toggling view
+
   }
 
   buyItem(item: any) {

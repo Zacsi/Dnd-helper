@@ -1,5 +1,8 @@
 <h2>SHOP</h2>
-<div class="board-game-table">
+<button mat-button (click)="toggleView()">Toggle View</button>
+
+
+<div *ngIf="!isTableView" class="board-game-table">
   <table mat-table [dataSource]="dataSource" matSort class="mat-elevation-z8">
 
     <ng-container matColumnDef="name">
@@ -59,4 +62,32 @@
   </table>
 </div>
 
-<!--<button (click)="buyItem(item)">Buy {{item.name}}</button>-->
+<div *ngIf="isTableView" class="shop-container">
+  <div *ngFor="let item of dataSource.data" class="shop-item" [ngClass]="{'flipped': item.isFlipped}" (click)="toggleFlip(item)">
+    <div class="front">
+      <div class="item-header">
+        <span class="item-name">{{ item.name }}</span>
+        <span class="item-price">{{ item.price | currency }}</span>
+      </div>
+      <div class="item-image">
+        <img *ngIf="item.picture" [src]="item.picture" alt="Item image" style="width: 150px; height: auto;">
+      </div>
+      <div class="item-actions">
+        <button mat-button (click)="buyItem(item); $event.stopPropagation()">Buy</button>
+        <select [(ngModel)]="selectedCharacter" (click)="$event.stopPropagation()">
+          <option *ngFor="let character of characters" [ngValue]="character">{{ character.name }}</option>
+        </select>
+      </div>
+    </div>
+    <div class="back">
+      <div class="item-details">
+        <p>Attack: {{ item.attackmodifier }}</p>
+        <p>Defense: {{ item.defensemodifier }}</p>
+        <p>HP: {{ item.hpmodifier }}</p>
+        <p>Min Level: {{ item.minimumlevel }}</p>
+        <p>{{ item.story | truncate:150 }}</p>
+      </div>
+    </div>
+  </div>
+</div>
+

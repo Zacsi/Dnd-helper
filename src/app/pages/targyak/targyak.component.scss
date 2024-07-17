@@ -1,143 +1,152 @@
-// Base colors and themes inspired by classic board games
-$background-color: #fdf1dc;  // A warm paper-like color
-$accent-color: #c0392b;      // Deep red for accents
-$header-color: #7f8c8d;      // A neutral dark gray for text headers
-$button-color: #834c19;      // Green color for buttons, reminiscent of classic game board colors
-
-// Base colors and themes previously defined
-body {
-  background-color: $background-color;
-  font-family: 'Garamond', serif;
-  overflow-x: auto;
+.shop-container {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+  gap: 16px;
+  padding: 16px;
+  width: 1100px;
+  margin: 0 auto; /* Center the container */
 }
 
-.board-game-table {
-  overflow-x: auto; // Enables horizontal scrolling for the table container
-
-  table {
-    width: 100%;
-    border-collapse: collapse;
-    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
-    th, td {
-      padding: 15px;
-      text-align: left;
-      border-bottom: 1px solid $header-color;
-    }
-  }
-
-  th {
-    color: $header-color;
-    font-size: 18px;
-  }
-
-  td {
-    background-color: rgba(255, 255, 255, 0.9);
-    color: #333;
-    vertical-align: top;
-  }
-
-  .description {
-    max-width: 300px;
-    overflow: hidden;
-    text-overflow: ellipsis;
-    white-space: nowrap;
-  }
-
-  .image-container {
-    display: flex;
-    flex-wrap: wrap;
-    justify-content: center;
-    gap: 10px;
-  }
-
-  img {
-    width: 150px;
-    height: auto;
-  }
-
-  button {
-    background-color: $button-color;
-    border: none;
-    color: white;
-    padding: 10px 20px;
-    text-transform: uppercase;
-    border-radius: 5px;
-    cursor: pointer;
-    transition: background-color 0.3s;
-
-    &:hover {
-      background-color: darken($button-color, 10%);
-    }
-  }
+.shop-item {
+  perspective: 1000px;
+  position: relative;
+  width: 100%;
+  height: 350px; /* Set a fixed height */
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }
 
-// Responsive design adjustments
+.shop-item .front, .shop-item .back {
+  width: 100%;
+  height: 100%;
+  backface-visibility: hidden;
+  transition: transform 0.6s;
+  position: absolute;
+  top: 0;
+  left: 0;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  border: 2px solid #000;
+  padding: 16px;
+  box-sizing: border-box;
+}
+
+.shop-item .front {
+  transform: rotateY(0deg);
+}
+
+.shop-item .back {
+  transform: rotateY(180deg);
+}
+
+.shop-item.flipped .front {
+  transform: rotateY(-180deg);
+}
+
+.shop-item.flipped .back {
+  transform: rotateY(0deg);
+}
+
+.item-header {
+  display: flex;
+  justify-content: space-between;
+  width: 100%;
+  margin-bottom: 8px;
+}
+
+.item-name {
+  font-weight: bold;
+}
+
+.item-price {
+  font-weight: bold;
+}
+
+.item-image {
+  width: 150px; /* Set a fixed width */
+  height: 150px; /* Set a fixed height */
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.item-image img {
+  max-width: 100%;
+  max-height: 100%;
+}
+
+.item-details p {
+  margin: 4px 0;
+}
+
+.item-actions {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 8px;
+  margin-top: 16px;
+}
+
+/* Responsive design adjustments */
 @media (max-width: 1024px) {
-  .board-game-table {
-    table, th, td {
-      font-size: 16px;
-    }
+  .shop-item {
+    height: 300px;
+  }
 
-    .description {
-      max-width: 200px;
-    }
+  .item-header {
+    font-size: 16px;
+  }
 
-    img {
-      width: 120px;
-    }
+  .item-image {
+    width: 120px;
+    height: 120px;
+  }
 
-    button {
-      padding: 8px 16px;
-    }
+  .item-actions button, .item-actions select {
+    padding: 8px 16px;
   }
 }
 
 @media (max-width: 768px) {
-  .board-game-table {
-    table, th, td {
-      font-size: 14px;
-      padding: 10px;
-    }
+  .shop-item {
+    height: 250px;
+  }
 
-    .description {
-      max-width: 150px;
-    }
+  .item-header {
+    font-size: 14px;
+  }
 
-    img {
-      width: 100px;
-    }
+  .item-image {
+    width: 100px;
+    height: 100px;
+  }
 
-    button {
-      padding: 5px 10px;
-      font-size: 12px;
-    }
+  .item-actions button, .item-actions select {
+    padding: 5px 10px;
+    font-size: 12px;
   }
 }
 
 @media (max-width: 480px) {
-  .board-game-table {
-    table, th, td {
-      font-size: 12px;
-      padding: 8px;
-    }
+  .shop-item {
+    height: 200px;
+  }
 
-    .description {
-      max-width: 100px;
-    }
+  .item-header {
+    font-size: 12px;
+  }
 
-    .image-container {
-      flex-direction: column;
-    }
+  .item-image {
+    width: 80px;
+    height: 80px;
+  }
 
-    img {
-      width: 80px;
-      margin: 0 auto; // Centers the image
-    }
-
-    button {
-      width: 100%;
-      padding: 4px 8px;
-      font-size: 10px;
-    }
+  .item-actions button, .item-actions select {
+    width: 100%;
+    padding: 4px 8px;
+    font-size: 10px;
   }
 }
