@@ -119,3 +119,20 @@ button {
     }
   }
   
+  .has-error .mat-form-field-underline {
+    background-color: red !important;
+  }
+  
+  .has-error .mat-form-field-wrapper {
+    color: red !important;
+  }
+
+  .mat-slider {
+    width: 100%;
+    margin-bottom: 16px;
+  }
+  
+  .mat-slider-thumb-label-text {
+    color: #fff;
+  }
+  

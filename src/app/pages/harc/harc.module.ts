@@ -8,6 +8,11 @@ import { MatSelectModule } from '@angular/material/select';
 import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatButtonModule } from '@angular/material/button';
 import { MatListModule } from '@angular/material/list';
+import { MatSliderModule } from '@angular/material/slider';
+import { MatDialogModule } from '@angular/material/dialog';
+import { MatInputModule } from '@angular/material/input';
+
+
 
 
 
@@ -21,7 +26,10 @@ import { MatListModule } from '@angular/material/list';
     MatListModule,
     MatButtonModule,
     MatFormFieldModule,
-    MatSelectModule
+    MatSelectModule,
+    MatSliderModule,
+    MatDialogModule,
+    MatInputModule
   ],
   exports: [
     HarcComponent 

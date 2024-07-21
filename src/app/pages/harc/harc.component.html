@@ -8,7 +8,14 @@
 
   <div>
     <h2>Fight</h2>
-    <mat-form-field appearance="fill">
+    <mat-form-field appearance="fill" *ngIf="!mode">
+      <mat-label>Select Mode:</mat-label>
+      <mat-select [(ngModel)]="mode" id="mode-select">
+        <mat-option value="simulation">Simulation</mat-option>
+        <mat-option value="manual">Manual</mat-option>
+      </mat-select>
+    </mat-form-field>
+    <mat-form-field appearance="fill" *ngIf="mode">
       <mat-label>Select Hero:</mat-label>
       <mat-select [(ngModel)]="selectedFirst" id="first-character">
         <mat-option *ngFor="let character of characters | async" [value]="character">
@@ -16,7 +23,7 @@
         </mat-option>
       </mat-select>
     </mat-form-field>
-    <mat-form-field appearance="fill">
+    <mat-form-field appearance="fill" *ngIf="mode">
       <mat-label>Select Enemy:</mat-label>
       <mat-select [(ngModel)]="selectedSecond" id="second-character">
         <mat-option *ngFor="let enemy of enemies | async" [value]="enemy">
@@ -24,7 +31,8 @@
         </mat-option>
       </mat-select>
     </mat-form-field>
-    <button mat-raised-button color="primary" (click)="simulateBattle()">Fight!</button>
+    <button mat-raised-button color="primary" (click)="startBattle()" *ngIf="mode">Start Battle</button>
+    <button mat-raised-button color="warn" (click)="resetSelection()" *ngIf="mode">Back</button>
   </div>
 
   <div>
@@ -39,3 +47,36 @@
     </div>
   </div>
 </div>
+
+<!-- Input dialog content -->
+<ng-template #inputDialog>
+  <h1 mat-dialog-title>Input Rolls</h1>
+  <div mat-dialog-content>
+    <mat-form-field>
+      <mat-label>Attack Roll</mat-label>
+      <input matInput [(ngModel)]="attackRoll" type="number" required>
+      <mat-error *ngIf="!attackRoll">Please enter an attack roll</mat-error>
+    </mat-form-field>
+    <mat-form-field>
+      <mat-label>Defense Roll</mat-label>
+      <input matInput [(ngModel)]="defenseRoll" type="number" required>
+      <mat-error *ngIf="!defenseRoll">Please enter a defense roll</mat-error>
+    </mat-form-field>
+  </div>
+  <div mat-dialog-actions>
+    <button mat-button (click)="closeDialog()">Back</button>
+    <button mat-button [disabled]="!attackRoll || !defenseRoll" (click)="dialogRef.close({ attackRoll: attackRoll, defenseRoll: defenseRoll })">OK</button>
+  </div>
+</ng-template>
+
+<!-- Confirm dialog content -->
+<ng-template #confirmDialog>
+  <h1 mat-dialog-title>Confirm</h1>
+  <div mat-dialog-content>
+    Are you sure you want to close the dialog?
+  </div>
+  <div mat-dialog-actions>
+    <button mat-button (click)="confirmDialogRef.close(false)">No</button>
+    <button mat-button (click)="confirmDialogRef.close(true)">Yes</button>
+  </div>
+</ng-template>
